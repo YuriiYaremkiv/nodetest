@@ -1,16 +1,24 @@
 const express = require("express");
+
 const app = express();
 
-const routes = require("./routes");
-
-const PORT = process.env.PORT || 3000;
-
-app.use("/", routes);
-
+// Головна сторінка
 app.get("/", (req, res) => {
-  res.send("Hello World! App testing");
+  res.send("Це головна сторінка");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+// Сторінка "Про нас"
+app.get("/about", (req, res) => {
+  res.send('Це сторінка "Про нас"');
+});
+
+// Сторінка "Контакти"
+app.get("/contact", (req, res) => {
+  res.send('Це сторінка "Контакти"');
+});
+
+// Порт для прослуховування
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Сервер запущено на порту ${port}`);
 });
